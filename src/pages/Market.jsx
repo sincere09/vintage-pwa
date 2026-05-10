@@ -219,7 +219,7 @@ export default function Market() {
                         <input type="checkbox" checked={checked} readOnly disabled={alreadyIn} style={{ flexShrink: 0, width: 18, height: 18 }} />
                         {item.photo_url
                           ? <img src={item.photo_url} alt="" style={{ width: 44, height: 44, objectFit: 'cover', flexShrink: 0, borderRadius: 2 }} loading="lazy" />
-                          : <div style={{ width: 44, height: 44, background: '#eee', flexShrink: 0, borderRadius: 2 }} />
+                          : <div style={{ width: 44, height: 44, background: 'var(--surface)', flexShrink: 0, borderRadius: 2 }} />
                         }
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div className="modal-item-name" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{item.name}</div>

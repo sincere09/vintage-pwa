@@ -2,16 +2,19 @@ import { useState } from 'react'
 import { useT, setLang } from '../lib/i18n'
 
 const THEMES = [
-  { id: 'taisho',   bg: '#F7F5F0', primary: '#141414' },
-  { id: 'yozakura', bg: '#1A1020', primary: '#E8829A' },
-  { id: 'ruri',     bg: '#EEF1F8', primary: '#2B4490' },
-  { id: 'kareno',   bg: '#F4EBD5', primary: '#7A4820' },
-  { id: 'sumkin',   bg: '#0E0E0C', primary: '#C8A030' },
+  { id: 'taisho',   bg: '#F7F5F0', primary: '#141414', meta: '#F7F5F0' },
+  { id: 'yozakura', bg: '#1A1020', primary: '#E8829A', meta: '#1A1020' },
+  { id: 'ruri',     bg: '#EEF1F8', primary: '#2B4490', meta: '#EEF1F8' },
+  { id: 'kareno',   bg: '#F4EBD5', primary: '#7A4820', meta: '#F4EBD5' },
+  { id: 'sumkin',   bg: '#0E0E0C', primary: '#C8A030', meta: '#0E0E0C' },
 ]
 
 function applyTheme(id) {
+  const theme = THEMES.find(t => t.id === id)
   if (id === 'taisho') document.documentElement.removeAttribute('data-theme')
   else document.documentElement.setAttribute('data-theme', id)
+  const metaTag = document.querySelector('meta[name="theme-color"]')
+  if (metaTag && theme) metaTag.setAttribute('content', theme.meta)
   localStorage.setItem('app_theme', id)
 }
 
