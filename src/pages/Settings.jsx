@@ -6,7 +6,7 @@ const THEMES = [
   { id: 'yozakura', bg: '#1A1020', primary: '#E8829A', meta: '#1A1020' },
   { id: 'ruri',     bg: '#EEF1F8', primary: '#2B4490', meta: '#EEF1F8' },
   { id: 'kareno',   bg: '#F4EBD5', primary: '#7A4820', meta: '#F4EBD5' },
-  { id: 'sumkin',   bg: '#0E0E0C', primary: '#C8A030', meta: '#0E0E0C' },
+  { id: 'sumkin',   bg: '#111110', primary: '#D4A830', meta: '#111110' },
 ]
 
 function applyTheme(id) {
