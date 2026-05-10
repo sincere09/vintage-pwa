@@ -8,7 +8,7 @@ import MemberLookup from './pages/MemberLookup.jsx'
 
 const THEME_META = {
   taisho: '#F7F5F0', yozakura: '#1A1020',
-  ruri: '#EEF1F8', kareno: '#F4EBD5', sumkin: '#111110',
+  ruri: '#EEF1F8', kareno: '#F4EBD5', shu: '#FBF0EC',
 }
 const savedTheme = localStorage.getItem('app_theme')
 if (savedTheme && savedTheme !== 'taisho') {

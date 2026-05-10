@@ -77,7 +77,7 @@ export const translations = {
       pinTitle: '會員頁 PIN 鎖', pinLabel: '設定 4 位數 PIN（留空表示不鎖）',
       pinPH: '例：1234', pinSave: '儲存 PIN', pinClear: '取消 PIN 鎖',
       themeTitle: '主題色彩',
-      themes: ['大正', '夜桜', '瑠璃', '枯野', '墨金'],
+      themes: ['大正', '夜桜', '瑠璃', '枯野', '朱'],
     },
     membersPin: {
       title: '請輸入 PIN', submit: '確認', wrong: 'PIN 錯誤',
@@ -195,7 +195,7 @@ export const translations = {
       pinTitle: 'Members PIN Lock', pinLabel: 'Set 4-digit PIN (leave blank to disable)',
       pinPH: 'e.g. 1234', pinSave: 'Save PIN', pinClear: 'Remove PIN Lock',
       themeTitle: 'Theme',
-      themes: ['Taisho', 'Yozakura', 'Ruri', 'Kareno', 'Sumi-kin'],
+      themes: ['Taisho', 'Yozakura', 'Ruri', 'Kareno', 'Shu'],
     },
     membersPin: {
       title: 'Enter PIN', submit: 'Confirm', wrong: 'Wrong PIN',
@@ -314,7 +314,7 @@ export const translations = {
       pinTitle: '会員ページ PIN ロック', pinLabel: '4桁PINを設定（空欄で無効）',
       pinPH: '例：1234', pinSave: 'PIN を保存', pinClear: 'PIN ロック解除',
       themeTitle: 'テーマカラー',
-      themes: ['大正', '夜桜', '瑠璃', '枯野', '墨金'],
+      themes: ['大正', '夜桜', '瑠璃', '枯野', '朱'],
     },
     membersPin: {
       title: 'PIN を入力', submit: '確認', wrong: 'PINが違います',
