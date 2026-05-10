@@ -91,11 +91,13 @@ export default function Inventory({ onSelect }) {
     <div>
       <h1>{t.inventory.title}</h1>
       <input className="search-bar" placeholder={t.inventory.search} value={search} onChange={e => setSearch(e.target.value)} />
-      <div className="chips" style={{ display: 'flex', alignItems: 'center' }}>
-        {t.cats.map(c => <button key={c} className={`chip ${cat === c ? 'active' : ''}`} onClick={() => setCat(c)}>{c}</button>)}
+      <div className="chips">
+        <div className="chips-scroll">
+          {t.cats.map(c => <button key={c} className={`chip ${cat === c ? 'active' : ''}`} onClick={() => setCat(c)}>{c}</button>)}
+        </div>
         <button
           className={`chip ${showFilter || hasFilter ? 'active' : ''}`}
-          style={{ marginLeft: 'auto', flexShrink: 0 }}
+          style={{ flexShrink: 0 }}
           onClick={() => setShowFilter(v => !v)}
         >
           {t.inventory.filter}{hasFilter ? ' ●' : ''}
