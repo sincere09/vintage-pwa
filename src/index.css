@@ -13,6 +13,62 @@
   --red: #B53020;
 }
 
+/* 夜桜 — 深紫夜 × 桃色 */
+[data-theme="yozakura"] {
+  --primary: #E8829A;
+  --gold: #D4956A;
+  --bg: #1A1020;
+  --card: #221528;
+  --surface: #2C1C34;
+  --border: #3D2845;
+  --text: #F0E0E8;
+  --muted: #9A7890;
+  --green: #6AAA88;
+  --red: #E06070;
+}
+
+/* 瑠璃 — 藍白 × 縹色 */
+[data-theme="ruri"] {
+  --primary: #2B4490;
+  --gold: #8A6E30;
+  --bg: #EEF1F8;
+  --card: #FFFFFF;
+  --surface: #E2E7F4;
+  --border: #C8D0EA;
+  --text: #181E30;
+  --muted: #7A88AA;
+  --green: #2A6050;
+  --red: #A83028;
+}
+
+/* 枯野 — 亞麻色 × 棕茶 */
+[data-theme="kareno"] {
+  --primary: #7A4820;
+  --gold: #B88020;
+  --bg: #F4EBD5;
+  --card: #FBF5E8;
+  --surface: #EAD9BA;
+  --border: #D4C098;
+  --text: #2A1E10;
+  --muted: #8A7255;
+  --green: #486A30;
+  --red: #A83020;
+}
+
+/* 墨金 — 純黑 × 金色 */
+[data-theme="sumkin"] {
+  --primary: #E4DED0;
+  --gold: #C8A030;
+  --bg: #0E0E0C;
+  --card: #181816;
+  --surface: #222220;
+  --border: #2E2E2A;
+  --text: #E4DED0;
+  --muted: #686460;
+  --green: #4A8A60;
+  --red: #B84030;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
   background: var(--bg);

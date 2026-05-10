@@ -1,6 +1,20 @@
 import { useState } from 'react'
 import { useT, setLang } from '../lib/i18n'
 
+const THEMES = [
+  { id: 'taisho',   bg: '#F7F5F0', primary: '#141414' },
+  { id: 'yozakura', bg: '#1A1020', primary: '#E8829A' },
+  { id: 'ruri',     bg: '#EEF1F8', primary: '#2B4490' },
+  { id: 'kareno',   bg: '#F4EBD5', primary: '#7A4820' },
+  { id: 'sumkin',   bg: '#0E0E0C', primary: '#C8A030' },
+]
+
+function applyTheme(id) {
+  if (id === 'taisho') document.documentElement.removeAttribute('data-theme')
+  else document.documentElement.setAttribute('data-theme', id)
+  localStorage.setItem('app_theme', id)
+}
+
 function load(key, def) {
   try { return JSON.parse(localStorage.getItem(key)) ?? def } catch { return def }
 }
@@ -20,6 +34,7 @@ export default function Settings() {
   const [newCostCustom, setNewCostCustom] = useState('')
   const [newCostAmt, setNewCostAmt] = useState('')
   const [saved, setSaved] = useState(false)
+  const [theme, setTheme] = useState(localStorage.getItem('app_theme') || 'taisho')
   const [pin, setPin] = useState(localStorage.getItem('members_pin') || '')
   const [pinSaved, setPinSaved] = useState(false)
 
@@ -59,6 +74,39 @@ export default function Settings() {
               onClick={() => setLang(l.code)}
             >
               {l.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="sell-section" style={{ marginBottom: 12 }}>
+        <div className="section-title">{t.settings.themeTitle}</div>
+        <div style={{ display: 'flex', gap: 16, paddingTop: 4 }}>
+          {THEMES.map((th, i) => (
+            <button
+              key={th.id}
+              onClick={() => { applyTheme(th.id); setTheme(th.id) }}
+              style={{
+                display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6,
+                background: 'none', border: 'none', cursor: 'pointer', padding: 0, flex: 1,
+              }}
+            >
+              <div style={{
+                width: 44, height: 44, borderRadius: '50%', background: th.bg,
+                border: theme === th.id ? `2.5px solid var(--text)` : '2px solid var(--border)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'border 0.2s',
+                boxShadow: theme === th.id ? '0 0 0 1.5px var(--bg)' : 'none',
+              }}>
+                <div style={{ width: 18, height: 18, borderRadius: '50%', background: th.primary }} />
+              </div>
+              <span style={{
+                fontSize: 10, letterSpacing: '0.04em',
+                color: theme === th.id ? 'var(--text)' : 'var(--muted)',
+                fontWeight: theme === th.id ? 600 : 400,
+              }}>
+                {t.settings.themes[i]}
+              </span>
             </button>
           ))}
         </div>

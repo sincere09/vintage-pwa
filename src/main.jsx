@@ -6,6 +6,11 @@ import Register from './pages/Register.jsx'
 import Feedback from './pages/Feedback.jsx'
 import MemberLookup from './pages/MemberLookup.jsx'
 
+const savedTheme = localStorage.getItem('app_theme')
+if (savedTheme && savedTheme !== 'taisho') {
+  document.documentElement.setAttribute('data-theme', savedTheme)
+}
+
 const search = window.location.search
 const isRegister = search.includes('register')
 const isFeedback = search.includes('feedback')
