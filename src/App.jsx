@@ -44,6 +44,7 @@ export default function App() {
       const dx = e.changedTouches[0].clientX - startX
       const dy = e.changedTouches[0].clientY - startY
       if (Math.abs(dx) < 80 || Math.abs(dx) < Math.abs(dy) * 4) return
+      if (e.target.closest('[data-swipeable]')) return
       if (selectedRef.current) { if (dx > 0) setSelectedId(null); return }
       const idx = TAB_IDS.indexOf(tabRef.current)
       if (dx < 0) switchTab(TAB_IDS[(idx + 1) % TAB_IDS.length])

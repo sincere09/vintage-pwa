@@ -20,6 +20,7 @@ export default function Inventory({ onSelect }) {
   const [cat, setCat] = useState(t.cats[0])
   const [loading, setLoading] = useState(true)
   const [swipedId, setSwipedId] = useState(null)
+  const swipedIdRef = useRef(null)
   const [showFilter, setShowFilter] = useState(false)
   const [fShoulder, setFShoulder] = useState('')
   const [fChest, setFChest] = useState('')
@@ -66,6 +67,7 @@ export default function Inventory({ onSelect }) {
   async function deleteItem(id) {
     if (!window.confirm(t.inventory.confirmDelete)) return
     await supabase.from('items').delete().eq('id', id)
+    swipedIdRef.current = null
     setSwipedId(null)
     fetchItems()
   }
@@ -76,8 +78,13 @@ export default function Inventory({ onSelect }) {
 
   const handleTouchEnd = (e, id) => {
     const deltaX = e.changedTouches[0].clientX - touchStartX.current
-    if (deltaX < -60) setSwipedId(id)
-    else if (deltaX > 30) setSwipedId(null)
+    if (deltaX < -60) {
+      swipedIdRef.current = id
+      setSwipedId(id)
+    } else if (deltaX > 30) {
+      swipedIdRef.current = null
+      setSwipedId(null)
+    }
   }
 
   return (
@@ -128,13 +135,14 @@ export default function Inventory({ onSelect }) {
         <div className="empty">{t.inventory.noItems}</div>
       ) : items.map(item => (
         <div key={item.id} style={{ position: 'relative', overflow: 'hidden' }}
+          data-swipeable="true"
           onTouchStart={handleTouchStart}
           onTouchEnd={e => handleTouchEnd(e, item.id)}
         >
           <div
             className="card"
             style={{ cursor: 'pointer', transform: swipedId === item.id ? 'translateX(-72px)' : 'translateX(0)', transition: 'transform 0.2s', userSelect: 'none' }}
-            onClick={() => { if (swipedId === item.id) { setSwipedId(null); return } onSelect(item.id) }}
+            onClick={() => { if (swipedIdRef.current === item.id) { swipedIdRef.current = null; setSwipedId(null); return } onSelect(item.id) }}
           >
             <div className="card-row">
               {item.photo_url ? <img src={item.photo_url} className="card-thumb" alt="" loading="lazy" /> : <div className="thumb-placeholder">{t.common.noPhoto}</div>}
